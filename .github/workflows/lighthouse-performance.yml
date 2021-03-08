@@ -1,0 +1,29 @@
+name: Collect Lighthouse performance scores 
+on:
+  schedule:
+    - cron: "0 * * * *"
+  workflow_dispatch:
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Audit URLs using Lighthouse
+        uses: treosh/lighthouse-ci-action@v7
+        with:
+          urls: |
+            http://benchmarks-empty-site.square.site/
+            https://benchmarks-shop-all-small.square.site/s/shop/
+            https://benchmarks-shop-all-medium.square.site/s/shop/
+            https://benchmarks-shop-all-large.square.site/s/shop/
+            https://benchmarks-shop-all-large.square.site/product/gathered-fork/2934
+            https://benchmarks-order-online-small.square.site/s/order/
+            https://benchmarks-order-online-medium.square.site/s/order/
+            https://benchmarks-order-online-large.square.site/s/order/
+            https://perf-test-order-online.square.site/
+            https://medium-perf-test-home-page.square.site/
+            https://large-perf-test-home-page.square.site/
+            https://empty-perf-test-order-online.square.site/s/order
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+          configPath: 'lighthouserc.json'
