@@ -12,7 +12,7 @@ jobs:
         uses: treosh/lighthouse-ci-action@v7
         with:
           urls: |
-            http://benchmarks-empty-site.square.site/
+            https://benchmarks-empty-site.square.site/
             https://benchmarks-shop-all-small.square.site/s/shop/
             https://benchmarks-shop-all-medium.square.site/s/shop/
             https://benchmarks-shop-all-large.square.site/s/shop/
